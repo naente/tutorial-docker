@@ -1,5 +1,8 @@
 FROM php:8.3.7-apache
 
+# rewrite_module をインストール
+RUN a2enmod rewrite
+
 # ドキュメントルートを変更
 ENV APACHE_DOCUMENT_ROOT /var/www/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
